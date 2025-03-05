@@ -23,7 +23,7 @@
           <td>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" [attr.data-bs-toggle]="'modal'" [attr.data-bs-target]="'#modal' + produto.codigo">
-              Launch static backdrop modal
+              Ver imagem
             </button>
 
             <!-- Modal -->
@@ -32,10 +32,11 @@
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-header">
+                    <h5 class="modal-title">{{ produto.nome }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <img [src]="produto.imagemUrl" alt="{{produto.nome}}" />
+                    <img class="img-fluid" [src]="produto.imagemUrl" alt="{{produto.nome}}" />
                   </div>
                 </div>
               </div>

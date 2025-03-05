@@ -17,7 +17,7 @@ export class AppComponent {
     produtos: Produto[] = [
       { nome: 'Produto 1', imagemUrl: 'https://via.placeholder.com/150', codigo: 12345 },
       { nome: 'Produto 2', imagemUrl: 'https://via.placeholder.com/150', codigo: 45689 },
-      { nome: 'Produto 3', imagemUrl: 'https://via.placeholder.com/150', codigo: 78977 },
+      { nome: 'Produto 3', imagemUrl: 'https://img.lojadomecanico.com.br/IMAGENS/37/466/145333/1594673606354.JPG', codigo: 78977 },
       { nome: 'Produto 4', imagemUrl: 'https://via.placeholder.com/150', codigo: 55489 }
     ];
   
