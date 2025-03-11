@@ -1,0 +1,2216 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=100" >
+		<link rel="shortcut icon" href="/template/body/favicon.png" />
+		<script src="/js/jquery.js"></script>
+		<script src="/js/jquery-ui.js"></script>
+		<script src="/js/bootstrap.js?version=1.28.28"></script>
+		<script src="/js/validate.js?version=1.28.28"></script>
+		<script src="/js/cookie.js?version=1.28.28"></script>
+		<script src="/js/mobile/mobile.js?version=1.28.28"></script>
+		<script src="/js/index.js?version=1.28.28"></script>
+		<script src="/js/notifica.js?version=1.28.28"></script>
+		<script src="https://cdn.rein.net.br/app/node_modules/socket.io-client/dist/socket.io.js"></script>
+    	<script src="https://cdn.rein.net.br/app/node_modules/laravel-echo/dist/echo.common.js?v=6.5.0-37"></script>
+		<script src="/js/socket-client.js"></script>
+		<script src="/js/pix.js"></script>
+		
+
+					<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+
+		<link rel="stylesheet" type="text/css" href="/js/mobile/mobile.css?version=1.28.28" />
+		<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="/css/jquery-ui-ie.css" />
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css?version=1.28.28" />
+		<link rel="stylesheet" type="text/css" href="/css/global.css?version=1.28.28" />
+		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+		<style>
+@import 'https://fonts.googleapis.com/css?family=Ubuntu';
+@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+
+*, html{margin:0; padding:0; border:none; outline:none;}
+body{background:#FFF; font-size:14px; font-family:Ubuntu, sans-serif; min-height:100%; color:#666666;}
+div.all{min-height:100%; height:auto;}
+div.corpo{padding-bottom:5px;}
+div.centro{padding:0;}
+
+div{overflow:hidden}
+table{width:100%;}
+a{color:#333; text-decoration:none; border:0; outline:none; cursor:pointer;}
+a:hover{color:#960c0c}
+input[type="text"],input[type="password"], select, textarea{padding:5px 10px; background:#FFF; border:1px solid #d7d7d7; margin:3px 0; font-size:14px; color: #333;}
+input[type="submit"], input[type="button"], .btn{padding:7px 10px; background:#57a957; color:#FFF; min-width:50px; cursor:pointer; border:1px solid #d3d3d3; font-size:14px; border-radius:0;}
+input[type="submit"]:hover, .botao:hover, .btn:hover{animation-name: hover; animation-duration: 0.65s; animation-fill-mode: forwards;}
+a.btn{display:block; float:left; text-decoration:none;}
+
+.btn-invert{background:#903 !important; color:#FFF !important}
+
+p{color:#666666}
+h1, h2, h3, h4{margin:5px; color:#333; font-weight:300; font-family:Ubuntu;}
+h1{color:#333; margin:8px; font-size:28px;};
+a img{border:0 !important;}
+table{font-size:12px; border-collapse:collapse;}
+.obrigatorio{border:1px #FF8C00 solid !important;}
+
+
+div.produto{}
+div.prod{box-sizing: border-box; border:1px solid #F1F1F1; text-align:left; padding-top:10px; padding-bottom:10px; min-height: 370px;}
+div.prod div.imagem{height:50%;}
+div.prod div.marca{height:16px;}
+div.prod div.imagem ul li {display:block;}
+div.prod div.imagem ul li a{display:block; width:100%; text-align:center;}
+div.prod div.imagem ul li a img{margin:0 auto;}
+div.prod div.desc{height:50%;}
+div.prod div.desc .compra{padding:0}
+div.prod div.desc .parcelamento{}
+div.prod div.desc .addcart{}
+div.prod div.desc .addcart {background: #CF0000 url(/body/comprar.png) 10px center no-repeat; color: #FFF; width: 100%; margin-bottom: 5px; border-radius:0; text-transform:uppercase; font-size:14px; text-align:right; padding:12px; animation:none;}
+div.prod div.desc .nome{text-align:left; margin-bottom:5px; padding:0 10px; height:55px; font-size:16px;}
+div.prod div.desc .nome a{font-size:14px; color:#333; padding:5px 0;}
+div.prod div.desc div.preco{min-height:30px;}
+div.prod div.desc span.preco{color:#ed5c5c; font-size:24px; font-weight:bold; padding:5px 0; margin-left:20px;}
+div.prod div.desc span.parcelamento{font-size:14px;}
+
+
+.precoBig{font-size:2em;color: #d30000;}
+
+
+div.filtroSuperior {width: 100%; position: relative; background: #ac232a; color: #ffffff; padding: 5px; height: 52px;}
+div.filtroSuperior label{display:block; float:left;}
+div.filtroSuperior label:last-child{float:right; margin:0 10px;}
+div.filtroSuperior h2{color:#ffffff;}
+div.filtroSuperior select{padding: 7px 10px; background: #FFF; font-size: 14px; color: #333; float: right; margin-right: -14px;}
+
+
+
+div.paginacao{display:block; position:relative; clear:both; padding:0 5px; width:100%; height:40px;}
+a.paginacaoSetas{display:block; position:absolute; right:0; top:5px; padding:5px; z-index:2;}
+a.paginacaoSetas:last-child{right:60px;}
+ul.paginacao{display:block; overflow:hidden; width:100%; clear:both; height:auto; padding:5px 0; position:absolute; top:0; left:0px; z-index:1;}
+ul.paginacao li{display:block; float:left; list-style:none;}
+ul.paginacao li a{text-decoration:none; padding:4px; line-height:150%; border-radius:5px;}
+ul.paginacao li a.destaca{background:#333; color:#FFF;}
+
+.nblocbg{position:fixed; top:5px; right:10px; display:none; z-index: 999; text-align: left;}
+.nbloc{font-family:sans-serif;  min-height:40px; height:auto; min-width:300px; max-width:400px; -moz-border-radius:20px; border-radius:20px; -webkit-box-shadow:0px 0px 10px #747474; -moz-box-shadow:0px 0px 10px #747474; display: none; position: relative; margin:5px; overflow: hidden; padding: 5px 0;}
+.nbloc table{margin:0 auto; width:90%; height:100%; position: relative; top:0px; left:0px;}
+.nbloc table td{vertical-align: middle;}
+.nbloc p{color:#FFF; font-weight:bold; line-height: 150%}
+.nbloc:hover{opacity: 0.5}
+
+::-webkit-input-placeholder {color: #CCC; opacity:  1; }
+:-moz-placeholder {color: #CCC; opacity:  1; }
+::-moz-placeholder {color: #CCC; opacity:  1; }
+:-ms-input-placeholder {color: #CCC; opacity:  1; }
+
+
+@keyframes hover {
+    from {background-color:#57a957; color:#FFF;}
+    to {background-color:#308630; color:#FFF;}
+}
+
+.icoPromo {position:absolute;left:1px;width:100px;height:100px;}
+.centro {padding:15px;}
+.padding0 { padding: 0; }
+
+.precoAntigo {
+    font-size: 0.9em;
+    text-decoration: line-through;
+    color: #1272ad;
+}
+.slicknav_menu {
+    font-size: 16px;
+    background: #4c4c4c;
+    padding: 5px;
+    border-radius: 5px;
+}
+.slicknav_menu:before {
+    font-size: 16px;
+    background: #4c4c4c;
+    padding: 5px;
+    content: 'MENU';
+    color: #fff;
+    margin-bottom: -30px;
+}
+.cycle-prev, .cycle-next {
+    width: 10%;
+}
+
+div#d100 div.listaParcelamento {
+    display: none;
+}
+</style><style type='text/css'>
+div#d39 ul{display:block; margin:0; padding:0;}
+div#d39 
+li{display:inline-block; list-style:none;}
+div#d39 
+li:first-child a:before{content:'' !important;}
+div#d39 
+li a{padding:15px; padding:10px; display:block;}
+div#d39 
+li a:before{content:'|'; padding-right:10px;}
+div#d39 
+li a img{padding:0 3px;; width:auto !important; height:auto !important;}
+div#d142 img{float:right;}
+div#d142 
+a{color:#666666; line-height:200%; margin-right:10px; font-size:14px;}
+div#d32 img{display:block; width:100%; height:auto; max-width:350px; margin:-10px auto;}
+div#d35 li{display:inline-block; list-style:none; line-height:150%; font-size:16px; padding:0 10px;}
+div#d35 
+img{float:left;}
+div#d145 p.p1{float: initial;
+    display: inline-block; width: 30%;}
+div#d145 
+p.p2{float: left;
+    display: inline-block; width: 70%;}
+div#d36 input.inputBusca{position:absolute; width:84%; border:1px solid #CCC; padding:15px; left:0; top:0; margin:0;}
+div#d36 
+.btBusca{position:absolute; right:0; top:0; width:15%; padding:10px; border:2px solid #CCC; background:#f6f6f6; color:#333; font-size:20px;}
+div#d37 div.carrinho{visibility:hidden; border:1px solid #CCC; padding:0; height:49px; position:relative; overflow:visible;}
+div#d37 
+div.carrinho a{display:block; background:#f4f4f4; border-left:1px solid #CCC; position:absolute; right:0; top:0; width:50px; height:47px; z-index:1;}
+div#d37 
+div.carrinho a span{display:block; padding:10px; font-size:22px;}
+div#d37 
+span.contador{position:absolute; top:-10px; right:45px; background:#f1c40f; height:20px; min-width:20px; z-index:2; border-radius:50%; color:#FFF; padding:2px 4px; display:block; overflow:hidden; text-align:center;}
+div#d37 
+div.carrinho b{font-size:22px; display:block; padding:10px; color:#c50d0d;}
+div#d34 ul{margin:0;}
+div#d34 
+li{display:inline-block;}
+div#d34 
+li a{display:block; color:#FFF; font-size:18px; padding:15px 20px;}
+div#d34 
+li a:hover{background:#c50d0d; cursor:pointer;}
+div#d47 .bx-wrapper{max-width:100% !important; height:105%; margin:0;}
+div#d47 
+img{max-height:90px; margin:0 auto;}
+div#d47 
+li{margin:0 20px; text-align:center;}
+div#d47 
+
+.bx-wrapper .bx-viewport {
+    -moz-box-shadow: 0 0 5px #ccc;
+    -webkit-box-shadow: 0 0 0px #fff;
+    box-shadow: 0 0 0px #fff;
+    border: none;
+    left: -10px;
+    background: #fff;
+height: 90px !important;
+}
+div#d43 h2{color:#FFF; line-height:200%; text-transform:uppercase;}
+div#d45 ul{display:block;padding-top:1px}
+div#d45 
+ul li{display:block; margin:1px 0; width:100%;}
+div#d45 
+ul li a{display:block; padding:5px; background:#F1F1F1; border-radius:5px; text-decoration:none; position:relative;}
+div#d45 
+ul li a span{color:#971b28; font-size:16px; font-weight:300;}
+div#d45 
+ul li a span.icon{position:absolute; right:0; top:3px;}
+div#d45 
+ul li ul{max-height:0px; overflow:hidden; transition:all 1.5s ease-out;}
+div#d45 
+ul li:hover ul{max-height:1500px;}
+div#d45 
+ul li ul li a{background:#fff;}
+div#d45 
+ul li a:hover {background:#971b28; cursor:pointer;}
+div#d45 
+ul li a:hover span{color:#FFF;}
+div#d45 
+ul li ul li a:hover label{background:none;}
+div#d45 
+ul li ul li a span{color:#333; font-size:14px;}
+div#d45 
+ul li ul li a label{display:block; width:15px; height:15px; float:left;}
+div#d45 
+
+ul li ul li ul li a{background:#dedede;}
+div#d45 
+ul li ul li ul li a:hover {background:#d1d1d1;}
+div#d45 
+ul li ul li ul li a span{color:#000; font-size:13px; padding-left:10px;}
+div#d45 
+ul li ul li ul li a label{display:block; width:15px; height:15px; float:left;}
+div#d45 
+
+ul li.destaca > a:first-child{background:#0269A3;}
+div#d45 
+ul li.destaca > a span{color:#FFF;}
+div#d45 
+ul li.destaca > a label{background:none;}
+div#d143 .item-banner img{width:100%; height:auto;}
+div#d41 .item-banner img{width:100%; height:auto;}
+div#d49 div{ float:left; border:4px solid #f2f2f0; min-height:130px !important;}
+div#d31 *{color:#333; line-height:200%;}
+div#d48 h2{text-transform:uppercase;}
+div#d134 li{display:block; list-style:none; font-size:14px; line-height:200%; padding:5px 0; color:#333}
+div#d134 
+img{float:left; margin-right:10px;}
+div#d135 *{color:#FFF; font-size:16px;}
+
+</style><link href="/js/carroselMarcas/bx.css?version=6273" rel="stylesheet" type="text/css" /><script src="/js/carroselMarcas/bx.js?version=6273" type="text/javascript" /></script><link href="/js/bannerFullWidth/bannerFullWidth.css?version=6273" rel="stylesheet" type="text/css" /><script src="/js/bannerFullWidth/bannerFullWidth.js?version=6273" type="text/javascript" /></script><script>$(function(){$("#d47 ul.bxslider").bxSlider({
+	  minSlides: 4,
+	  maxSlides: 4,
+	  slideWidth: 360,
+	  slideMargin: 10,
+ ticker: true,
+  speed: 120000,
+randomStart:true,
+tickerHover:true
+});});</script><title>Beta Componentes Eletrônicos - Home</title><meta name="description" content="Componentes Eletronicos e Informatica"><meta name="keywords" content="Arduino, raspberry, cabos, placas, adaptador, circuito, digital, medidor, solda, acessorios, rede">		<noscript><h2 class="noscript">Habilite o javascript no seu navegador</h2></noscript>
+	</head>
+	<body>
+
+		
+		<div class="all"><div id='d1' style='' class='1'><div id='d38' style='width:100%; background:#f4f4f4; min-height:40px; border-top:3px solid #ac232a;' class=''><div id='d39' style='min-height:40px;' class='container'><div id='d141' style='min-height:40px;' class='col-xs-6'><div class="login">
+	<ul>
+		<li><a href="/cadastrar"><img src="/template/body/cadastrar.png" alt="" />Cadastrar</a></li>
+		<li><a href="/login"><img src="/template/body/logoff.png" alt="" width="14" height="11" />Login</a></li>
+		<li><a href="/carrinho"><img src="/template/body/carrinho.png" alt="" />Carrinho</a></li>
+	</ul>
+</div></div><div id='d142' style='min-height:40px; text-align:right; padding-top:5px;' class='col-xs-6 '><p><a href="https://www.facebook.com/betacomercial/"><img alt="Facebook Beta" src="/img/maladireta/facebooklogo.png" style="float:left; height:24px; width:24px" /></a>Atendimento<img alt="" src="/template/body/skype.png" style="height:27px; width:27px" /></p></div></div></div><div id='d26' style='min-height:100px; margin-bottom:5px;' class='container '><div id='d32' style='min-height:130px; padding-top:25px; padding:25px 0;' class='col-md-3 '><p><a href="/"><img src="/template/body/logo.png" alt="" width="278" height="77" /></a></p></div><div id='d33' style='min-height:80px; padding-right:0;' class='col-md-9 '><div id='d35' style='margin-top:10px; padding:6px;' class='col-md-12 col-xs-12'><div id='d144' style='min-height: 50px;' class='col-md-5 col-xs-12'><p>Solicite seu or&ccedil;amento ou consulta de disponibilidade pelos canais digitais:</p></div><div id='d145' style='min-height:50px; padding:0px' class='col-md-7 col-xs-12'><p class="p1"><img alt="" src="/template/body/whatsapp2.png" style="height:25px; width:25px"> (41) 99915-0051</p>
+
+<p class="p2"><img alt="" src="/template/body/carta.png" style="height:21px; width:27px"> vendas5@betacomercial.com.br</p>
+
+<p class="p1"><img alt="" src="/template/body/whatsapp2.png" style="height:25px; width:25px">(41) 99915-0137</p>
+
+<p class="p2"><img alt="" src="/template/body/carta.png" style="height:21px; width:27px"> vendas1@betacomercial.com.br</p>
+
+<p class="p1"><img alt="" src="/template/body/whatsapp2.png" style="height:25px; width:25px"> (41) 99967-4103</p>
+
+<p class="p2"><img alt="" src="/template/body/carta.png" style="height:21px; width:27px"> vendas13@betacomercial.com.br</p></div></div></div><div id='d36' style='height:50px;' class='col-md-7 col-sm-7'><form method='get' class='inputBusca' action='https://betacomercial.com.br/pesquisa'>
+<input type='text' name='busca' class='inputBusca' placeholder='Procurando algo?' />
+<button type='submit' class='btBusca'>
+	<span class="fa fa-search"></span>
+</button>
+</form></div><div id='d140' style='min-height:40px;' class='col-sm-1 visible-sm'></div><div id='d37' style='min-height:50px; overflow:visible; margin-bottom:10px; padding:0;' class='col-md-5 col-sm-4 hidden'><div class="col-md-6 hidden-xs hidden-sm"></div>
+<div class='carrinho col-md-6'>
+	<b class="total">R$ 0.00</b>
+	<span class="contador">0</span>
+	<a href='/carrinho'>
+		<span class="fa fa-shopping-cart"></span>
+	</a>
+</div></div></div><div id='d34' style='min-height: 50px; background: rgb(64, 64, 64); padding:0; text-align: center;' class='col-md-12'><ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/quem-somos">Quem somos</a></li>
+	<li><a href="/termos-de-uso">Termos de uso</a></li>
+	<li><a href="/contato">Contato</a></li>
+</ul></div><div id='d136' style='width: 100%; min-height: 50px;' class='menumobile visible-xs visible-sm'></div></div><div id='d47' style='height:105px;padding:0;' class='container'><ul class='bxslider'><li><img src='https://betacomercial.com.br/img/icones/icomarca_48.jfif' alt='Knup' title='Knup' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_34.png' alt='Panasonic' title='Panasonic' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_33.png' alt='Elgin' title='Elgin' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_32.jfif' alt='Forceline' title='Forceline' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_30.jfif' alt='Multilaser' title='Multilaser' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_29.png' alt='Bosch' title='Bosch' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_28.png' alt='Linksys' title='Linksys' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_27.jfif' alt='Mega Polo' title='Mega Polo' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_26.png' alt='Seccon' title='Seccon' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_35.jfif' alt='Solver' title='Solver' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_37.png' alt='Hoopson' title='Hoopson' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_38.png' alt='Sindal' title='Sindal' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_47.png' alt='Vinik' title='Vinik' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_46.png' alt='Lucky' title='Lucky' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_45.png' alt='Hayonic' title='Hayonic' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_44.png' alt='Unitel' title='Unitel' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_43.jfif' alt='CHIP SCE' title='CHIP SCE' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_42.png' alt='Neoyama' title='Neoyama' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_41.png' alt='Tomate' title='Tomate' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_40.jfif' alt='X-CELL' title='X-CELL' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_25.png' alt='Intelbras' title='Intelbras' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_24.jfif' alt='Comm 5' title='Comm 5' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_23.png' alt='TP-LINK' title='TP-LINK' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_10.png' alt='Moura' title='Moura' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_9.png' alt='Metaltex' title='Metaltex' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_8.jfif' alt='Vonder' title='Vonder' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_7.png' alt='Aquário' title='Aquário' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_6.jpg' alt='Comtac' title='Comtac' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_4.jpg' alt='Hikari' title='Hikari' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_3.jfif' alt='Solden' title='Solden' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_2.jpg' alt='ICEL' title='ICEL' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_11.png' alt='Implastec' title='Implastec' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_12.jfif' alt='AFR' title='AFR' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_14.jfif' alt='KLC' title='KLC' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_22.jfif' alt='Condutti' title='Condutti' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_21.png' alt='Steinel' title='Steinel' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_20.jfif' alt='Kairos' title='Kairos' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_19.jpg' alt='D-Link' title='D-Link' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_18.png' alt='Hayama' title='Hayama' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_17.jfif' alt='Rontek' title='Rontek' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_16.png' alt='Unipower' title='Unipower' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_15.jfif' alt='Nevatron' title='Nevatron' /></li><li><img src='https://betacomercial.com.br/img/icones/icomarca_1.png' alt='Minipa' title='Minipa' /></li></ul></div><div id='d30' style='min-height:100px;' class='container content'><div id='d40' style='min-height:100px; padding-left:0; overflow:visible;' class='col-md-3 hidden-xs hidden-sm '><div id='d43' style='min-height:50px; background:#333; text-align:center;' class=''><h2>Categorias</h2></div><div id='d45' style='min-height:400px; background:#ffffff; /*border:1px solid #CCC; */overflow:visible; padding-top:2px' class=''><div class="navigation menuoriginal">
+    <ul class="mainmenu">
+                        <li>
+            <a href="/familia/arduino">
+                <span>Arduino</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/acessorios-e-protoboards">
+                            <span>Acessórios e Protoboards</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/processadores-arduino">
+                            <span>Processadores Arduino</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/shields">
+                            <span>Shields</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/sensores">
+                            <span>Sensores</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/modulos">
+                            <span>Módulos</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/kits">
+                            <span>Kits</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/raspberry">
+                            <span>Raspberry</span>
+                                                    </a>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/baterias-seladas">
+                <span>Baterias Seladas</span>
+                            </a>
+
+                    <li>
+            <a href="/familia/cabos">
+                <span>Cabos</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/acessorios-para-cabos">
+                            <span>Acessórios para Cabos</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/espaguetes-termoretrateis">
+                                            <span>Espaguetes Termoretrateis</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/adaptadores-e-conversores">
+                            <span>Adaptadores e Conversores</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/audio-video-fibra-optica">
+                            <span>Audio/Video/Fibra Optica</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/cabo-flat">
+                            <span>Cabo Flat</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/cabo-manga">
+                            <span>Cabo Manga</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/blindado-fita">
+                                            <span>Blindado Fita</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/blindado-tranca">
+                                            <span>Blindado Trança</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/sem-blindagem">
+                                            <span>Sem Blindagem</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/coaxiais">
+                            <span>Coaxiais</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/eletricos">
+                            <span>Elétricos</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/filtro-de-linha-e-regua">
+                            <span>Filtro de Linha e Regua</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/par-trancado">
+                            <span>Par Trançado</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/patch-cord">
+                                            <span>Patch Cord</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/telefonicos">
+                            <span>Telefônicos</span>
+                                                    </a>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/caixas-plasticas">
+                <span>Caixas Plasticas</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/pes-de-borracha">
+                            <span>Pés de Borracha</span>
+                                                    </a>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/chaves-e-sinalizadores">
+                <span>Chaves e Sinalizadores</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/alavanca-e-hh">
+                            <span>Alavanca e HH</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/comando-seletora-emergencia">
+                            <span>Comando, Seletora, Emergencia</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/micro-switch-fim-de-curso">
+                            <span>Micro Switch, Fim de Curso</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/push-bottom-tact-reed-switch">
+                            <span>Push Bottom, Tact, Reed Switch</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/sinalizadores-e-olho-de-boi">
+                            <span>Sinalizadores e Olho de Boi</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/tecla-dip">
+                            <span>Tecla, DIP</span>
+                                                    </a>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/componentes">
+                <span>Componentes</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/automacao">
+                            <span>Automação</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/buzzers-e-sirenes">
+                            <span>Buzzers e Sirenes</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/capacitores">
+                            <span>Capacitores</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/ceramicos-e-smd">
+                                            <span>Ceramicos e SMD</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/eletroliticos-e-polipropileno">
+                                            <span>Eletroliticos e Polipropileno</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/poliester-metalizado">
+                                            <span>Poliester Metalizado</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/multicamada-plate-tantalo-e-trimmer">
+                                            <span>Multicamada, Plate, Tantalo e Trimmer</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/circuitos-integrados-1">
+                            <span>Circuitos Integrados</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/circuitos-integrados-dip">
+                                            <span>Circuitos Integrados DIP</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/opto-acopladores">
+                                            <span>OPTO acopladores</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/smd">
+                                            <span>SMD</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/tda">
+                                            <span>TDA</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/cristal-oscilador">
+                            <span>Cristal Oscilador</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/diodos-e-pontes-retificadoras">
+                            <span>Diodos e Pontes Retificadoras</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/displays">
+                            <span>Displays</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/fusiveis">
+                            <span>Fusíveis</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/fusivel-automotivo">
+                                            <span>Fusível Automotivo</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/fusiveis-de-retardo">
+                                            <span>Fusíveis de Retardo</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/fusiveis-de-vidro">
+                                            <span>Fusíveis de Vidro</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/micro-e-termicos">
+                                            <span>Micro e Termicos</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/leds">
+                            <span>Leds</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/emissores-e-receptores">
+                                            <span>Emissores e Receptores</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/fita-de-led">
+                                            <span>Fita de Led</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/led-e-led-smd">
+                                            <span>Led e Led SMD</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/micro-choque">
+                            <span>Micro Choque</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/placa-circuito-impresso-insumos">
+                            <span>Placa Circuito Impresso/Insumos</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/potenciometros">
+                            <span>Potenciometros</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/16-23mm-de-fio-e-knobs">
+                                            <span>16/23mm, de Fio e Knobs</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/trimpots">
+                                            <span>Trimpots</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/multivolta-e-deslizante">
+                                            <span>Multivolta e Deslizante</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/reles">
+                            <span>Relés</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/acessorios-para-rele">
+                                            <span>Acessorios para Rele</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/automotivos">
+                                            <span>Automotivos</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/estado-solido">
+                                            <span>Estado Sólido</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/industriais">
+                                            <span>Industriais</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/micro-reles">
+                                            <span>Micro Relés</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/resistores">
+                            <span>Resistores</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/resistores-smd">
+                                            <span>Resistores  SMD</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/resistores-1-8w-5-p-cento">
+                                            <span>Resistores 1/8W 5 p/ cento</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/resistores-1-4w-5-p-cento">
+                                            <span>Resistores 1/4W 5 p/cento</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/resistores-1-4w-1-p-cento">
+                                            <span>Resistores 1/4W 1 p/cento</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/resistores-1w">
+                                            <span>Resistores 1W</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/resistores-2w">
+                                            <span>Resistores 2W</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/resistores-3w">
+                                            <span>Resistores 3W</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/resistores-5w">
+                                            <span>Resistores 5W</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/resistores-10w">
+                                            <span>Resistores 10W</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/rede-resistiva">
+                                            <span>Rede Resistiva</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/ldr">
+                                            <span>LDR</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/sensores-1">
+                            <span>Sensores</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/termistor-e-varistor">
+                            <span>Termistor e Varistor</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/toroide-e-ferrite">
+                            <span>Toroide e Ferrite</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/transformador-estabilizador-e-nobreak">
+                            <span>Transformador, Estabilizador e Nobreak</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/transistores-1">
+                            <span>Transistores</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/igbt">
+                                            <span>IGBT</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/smd-2">
+                                            <span>SMD</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/linhas-2n-e-2s">
+                                            <span>Linhas 2N e 2S</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/linhas-ir-e-tip">
+                                            <span>Linhas IR e TIP</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/demais-linhas">
+                                            <span>Demais Linhas</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/triac">
+                                            <span>Triac</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/isoladores-e-dissipadores">
+                                            <span>Isoladores e Dissipadores</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/conectores">
+                <span>Conectores</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/adptadores-e-emendas">
+                            <span>Adptadores e Emendas</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/audio-e-video-1">
+                            <span>Audio e Video</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/automotivos">
+                            <span>Automotivos</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/conectores-para-teste">
+                            <span>Conectores para Teste</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/bornes">
+                                            <span>Bornes</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/garras-jacare">
+                                            <span>Garras Jacaré</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/pinos-banana">
+                                            <span>Pinos Banana</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/db-e-centronics">
+                            <span>DB e Centronics</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/de-passagem">
+                            <span>De Passagem</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/de-potencia">
+                            <span>De Potencia</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/especiais">
+                            <span>Especiais</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/adaptadores">
+                                            <span>Adaptadores</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/conectores-serie-bnc">
+                                            <span>Conectores Série Bnc</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/conectores-serie-f">
+                                            <span>Conectores Série F</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/conectores-serie-n">
+                                            <span>Conectores Série N</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/conectores-serie-sma">
+                                            <span>Conectores Serie SMA</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/conectores-serie-uhf">
+                                            <span>Conectores Série Uhf</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/conectores-tnc">
+                                            <span>Conectores Tnc</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/faston-forquilha-pino-olhal">
+                            <span>Faston/Forquilha/Pino/Olhal</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/kk">
+                            <span>KK</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/kk-passo-2-54">
+                                            <span>KK Passo 2.54</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/kk-passo-3-96">
+                                            <span>KK Passo 3.96</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/micro-fit">
+                            <span>Micro Fit</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/mini-fit">
+                            <span>Mini Fit</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/mini-modu">
+                            <span>Mini Modu</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/multi-vias">
+                            <span>Multi Vias</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/barra-sindal-bendal">
+                                            <span>Barra Sindal/Bendal</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/bornes-br">
+                                            <span>Bornes BR</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/conector-circular">
+                                            <span>Conector Circular</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/conector-euro">
+                                            <span>Conector Euro</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/conector-header">
+                                            <span>Conector Header</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/conector-kre">
+                                            <span>Conector Kre</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/conector-latch">
+                                            <span>Conector Latch</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/conector-mike">
+                                            <span>Conector Mike</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/conector-mini-din">
+                                            <span>Conector Mini DIN</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/pe-e-ph">
+                            <span>PE e PH</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/rj45-e-rj11">
+                            <span>RJ45 e RJ11</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/soquetes-para-ci">
+                            <span>Soquetes para CI</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/telefonia">
+                            <span>Telefonia</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/terminais">
+                            <span>Terminais</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/barra-de-pino">
+                                            <span>Barra de Pino</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/terminal-conectores-multi-vias">
+                                            <span>Terminal Conectores Multi Vias</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/terminal-faston">
+                                            <span>Terminal Faston</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/terminal-tubular-luva">
+                                            <span>Terminal Tubular/Luva</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/tomada-e-plug-eletricos">
+                            <span>Tomada e Plug Eletricos</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/usb">
+                            <span>USB</span>
+                                                    </a>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/ferramentas">
+                <span>Ferramentas</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/alicates">
+                            <span>Alicates</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/bico-corte-universal">
+                                            <span>Bico/Corte/Universal</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/crimpagem">
+                                            <span>Crimpagem</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/decapador-punch-extrator">
+                                            <span>Decapador/Punch/Extrator</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/equipamentos-anti-estatica">
+                            <span>Equipamentos Anti Estática</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/limpeza-lubrificacao-sprays">
+                            <span>Limpeza, Lubrificação, Sprays</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/lupas-e-lanternas">
+                            <span>Lupas e Lanternas</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/manuais-bancada">
+                            <span>Manuais/Bancada</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/soldagem">
+                            <span>Soldagem</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/acessorios-para-soldagem">
+                                            <span>Acessorios para Soldagem</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/estacao-solda-retrabalho">
+                                            <span>Estacao Solda/Retrabalho</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/ferros-de-solda-sugadores">
+                                            <span>Ferros de Solda/Sugadores</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/soldas-e-fluxos">
+                                            <span>Soldas e Fluxos</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/fontes-e-inversores">
+                <span>Fontes e Inversores</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/estabilizadas">
+                            <span>Estabilizadas</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/metalicas">
+                            <span>Metalicas</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/plasticas-chaveadas">
+                            <span>Plasticas Chaveadas</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/notebook-monitor-impressora">
+                            <span>Notebook, Monitor, Impressora</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/inversores">
+                            <span>Inversores</span>
+                                                    </a>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/informatica">
+                <span>Informática</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/access-point-e-roteadores">
+                            <span>Access Point e Roteadores</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/adaptadores-de-audio">
+                            <span>Adaptadores de Audio</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/adaptadores-conversores-audio-video">
+                            <span>Adaptadores/Conversores Audio/Video</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/cabeamento-e-adaptadores">
+                            <span>Cabeamento e Adaptadores</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/fontes-para-micro">
+                            <span>Fontes para Micro</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/hub-switch-e-chaveadores">
+                            <span>Hub, Switch e Chaveadores</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/leitores-de-codigo-de-barras-e-cartoes">
+                            <span>Leitores de Código de Barras e Cartôes</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/pen-drive-cartoes-de-memoria-cd-e-leitores">
+                            <span>Pen Drive, Cartões de Memoria, CD e Leitores</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/placas">
+                            <span>Placas</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/teclado-e-mouse">
+                            <span>Teclado e Mouse</span>
+                                                    </a>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/instrumentacao">
+                <span>Instrumentação</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/fonte-ajustavel">
+                            <span>Fonte Ajustável</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/timer">
+                            <span>Timer</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/alicate-amperimetro">
+                            <span>Alicate Amperímetro</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/multimetros">
+                            <span>Multímetros</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/demais-instrumentos">
+                            <span>Demais Instrumentos</span>
+                                                    </a>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/motores">
+                <span>Motores</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/motores-dc">
+                            <span>Motores DC</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/motores-ac">
+                            <span>Motores AC</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/motores-de-passo">
+                            <span>Motores de Passo</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/motores-de-reducao">
+                            <span>Motores de Redução</span>
+                                                    </a>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/pilhas-baterias-e-carregadores">
+                <span>Pilhas, Baterias e Carregadores</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/carregadores">
+                            <span>Carregadores</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/nao-recarregaveis">
+                            <span>Não Recarregaveis</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/recarregaveis">
+                            <span>Recarregaveis</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/suporte-para-pilhas">
+                            <span>Suporte para Pilhas</span>
+                                                    </a>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/seguranca-eletronica">
+                <span>Segurança Eletronica</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/centrais-e-cameras">
+                            <span>Centrais e Câmeras</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/interfone-e-porteiro-eletronico">
+                            <span>Interfone e Porteiro Eletronico</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/sensores-e-travas">
+                            <span>Sensores e Travas</span>
+                                                    </a>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/suportes">
+                <span>Suportes</span>
+                            </a>
+
+                    <li>
+            <a href="/familia/telefonia">
+                <span>Telefonia</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/acessorios">
+                            <span>Acessórios</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/headset">
+                            <span>Headset</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/telefones">
+                            <span>Telefones</span>
+                                                    </a>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/ventiladores">
+                <span>Ventiladores</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/cooler-para-processadores-e-cpu">
+                            <span>Cooler para Processadores e CPU</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/ventilador-usb-e-acessorios">
+                            <span>Ventilador USB e Acessorios</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/ventiladores-de-uso-geral">
+                            <span>Ventiladores de Uso Geral</span>
+                                                    </a>
+                                            </li>
+                </ul>
+                    <li>
+            <a href="/familia/utilidades">
+                <span>Utilidades</span>
+                                    <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></span>
+                            </a>
+
+                            <ul class="submenu">
+                                        <li>
+                        <a href="/categoria/acessorios-p-celular-e-notebook">
+                            <span>Acessorios p/ Celular e Notebook</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/antenas-e-divisores">
+                            <span>Antenas e Divisores</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/antenas">
+                                            <span>Antenas</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/audio-e-video">
+                            <span>Audio e Video</span>
+                                                            <span class="icon" style="font-size: 1.2em; float: right; width: 10px; margin-right: 5px;">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span>
+                                                    </a>
+                                                    <ul class="sub_menu">
+                                                                    <li>
+                                        <a href="/subcategoria/caixas-de-som">
+                                            <span>Caixas de Som</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/controle-remoto">
+                                            <span>Controle Remoto</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="/subcategoria/web-cam">
+                                            <span>Web Cam</span>
+                                        </a>
+                                    </li>
+                                                            </ul>
+                                            <li>
+                        <a href="/categoria/automotivos-1">
+                            <span>Automotivos</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/fones-de-ouvido-e-microfones">
+                            <span>Fones de ouvido e Microfones</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/lar-e-conforto">
+                            <span>Lar e Conforto</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/luminarias-e-refletores">
+                            <span>Luminárias e Refletores</span>
+                                                    </a>
+                                            <li>
+                        <a href="/categoria/protetores-eletricos">
+                            <span>Protetores Elétricos</span>
+                                                    </a>
+                                            </li>
+                </ul>
+                    </li>
+    </ul>
+    <div style="clear:both; width:100%;"></div>
+</div>
+
+
+
+
+
+</div><div id='d143' style='width:100%; min-height:100px; margin-top:5px;' class=''></div></div><div id='d41' style='min-height:10px; background:#f1f1f1; margin-bottom:5px; padding:0;' class='col-md-9 '></div><div id='d46' style='min-height:50px; background:#b91919 url(/body/atendimento.png) center no-repeat;' class='col-md-9 hidden-xs'></div><div id='d49' style='min-height:100px; padding:5px 0;
+display:none;' class='col-md-9 '><div id='d50' style='min-height:100px; background:url(/body/garantia.png) center center no-repeat;' class='col-sm-4 col-md-4 col-xs-12 '></div><div id='d51' style='min-height:100px;background:url(/body/frete.png) center center no-repeat;' class='col-sm-4 col-md-4 col-xs-12 '></div><div id='d52' style='min-height:100px; background:url(/body/promocao.png) center center no-repeat;' class='col-sm-4 col-md-4 col-xs-12 '></div></div><div id='d42' style='min-height: 100px;' class='col-md-9'><div class='miniBlocs'><div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/carrinho-educacional-solar-kit-montagem" class='miniImage'>
+					<img src="/img/216x162/carrinho-educacional-solar-kit-montagem_26618.jpg" alt="CARRINHO EDUCACIONAL SOLAR - KIT MONTAGEM" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/carrinho-educacional-solar-kit-montagem">CARRINHO EDUCACIONAL SOLAR - KIT MONTAGEM</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/shield-mini-modulo-amplif-audio-2-x-3w-pam8403-5v" class='miniImage'>
+					<img src="/img/216x162/shield-mini-modulo-amplifi-audio-2-x-3w-pam8403-5v_22385.jpg" alt="SHIELD MINI MODULO AMPLIF AUDIO 2 X 3W PAM8403-5V" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/shield-mini-modulo-amplif-audio-2-x-3w-pam8403-5v">SHIELD MINI MODULO AMPLIF AUDIO 2 X 3W PAM8403-5V</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/amperimetro-digital-100a-22mm-circular" class='miniImage'>
+					<img src="/img/216x162/amperimetro-digital-100a-22mm-circular_18209.jpg" alt="AMPERIMETRO DIGITAL 100A 22MM CIRCULAR" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/amperimetro-digital-100a-22mm-circular">AMPERIMETRO DIGITAL 100A 22MM CIRCULAR</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/diodo-p6ke12-supressor-6-8-a-440v" class='miniImage'>
+					<img src="/img/216x162/diodo-p6ke12_9130.jpg" alt="DIODO P6KE12 - SUPRESSOR  6,8 A 440V" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/diodo-p6ke12-supressor-6-8-a-440v">DIODO P6KE12 - SUPRESSOR  6,8 A 440V</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/capacitor-ceramico-1pf-50v-smd-0805" class='miniImage'>
+					<img src="/img/216x162/capacitor-ceramico-1pf-50v-smd-0805_11474.jpg" alt="CAPACITOR CERAMICO 1PF/50V SMD - 0805" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/capacitor-ceramico-1pf-50v-smd-0805">CAPACITOR CERAMICO 1PF/50V SMD - 0805</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/shield-adaptador-usb-p-modulo-wifi-esp-8266-esp-01-ch340" class='miniImage'>
+					<img src="/img/216x162/shield-adaptador-usb-p-modulo-wifi-esp-8266-esp-01-ch340_17837.jpg" alt="SHIELD ADAPTADOR USB P/MODULO WIFI ESP.8266 ESP-01 - CH340" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/shield-adaptador-usb-p-modulo-wifi-esp-8266-esp-01-ch340">SHIELD ADAPTADOR USB P/MODULO WIFI ESP.8266 ESP-01 - CH340</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/arduino-lilypad-atmega-328" class='miniImage'>
+					<img src="/img/216x162/arduino-lilypad-atmega-328_4879.jpg" alt="ARDUÍNO LILYPAD ATMEGA 328" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/arduino-lilypad-atmega-328">ARDUÍNO LILYPAD ATMEGA 328</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/nucleo-toroide-t-10" class='miniImage'>
+					<img src="/img/216x162/nucleo-toroide-t-10_19168.jpg" alt="NUCLEO TOROIDE T-10" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/nucleo-toroide-t-10">NUCLEO TOROIDE T-10</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/anemometro-digital-mda-10-minipa" class='miniImage'>
+					<img src="/img/216x162/anemometro-digital-mda-10_1157.jpg" alt="ANEMÔMETRO DIGITAL MDA-10 MINIPA" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/anemometro-digital-mda-10-minipa">ANEMÔMETRO DIGITAL MDA-10 MINIPA</a>
+		</div>
+		<div class="marca">
+			Minipa		</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/arduino-leonardo-r3-cabo-usb" class='miniImage'>
+					<img src="/img/216x162/arduino-leonardo-r3-cabo-usb_17814.jpg" alt="ARDUINO LEONARDO R3+CABO USB" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/arduino-leonardo-r3-cabo-usb">ARDUINO LEONARDO R3+CABO USB</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/conector-micro-fit-femea-02-vias" class='miniImage'>
+					<img src="/img/216x162/conector-micro-fit-femea-02-vias_29268.jpg" alt="CONECTOR MICRO FIT FEMEA 02 VIAS" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/conector-micro-fit-femea-02-vias">CONECTOR MICRO FIT FEMEA 02 VIAS</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/espaguete-termoretratil-1-0mm" class='miniImage'>
+					<img src="/img/216x162/espaguete-termoretratil-1-0mm_15262.jpg" alt="ESPAGUETE TERMORETRATIL  1,0MM" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/espaguete-termoretratil-1-0mm">ESPAGUETE TERMORETRATIL  1,0MM</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/conector-mini-fit-femea-02-vias" class='miniImage'>
+					<img src="/img/216x162/conector-mini-fit-femea-2-vias_3740.jpg" alt="CONECTOR MINI FIT FEMEA 02 VIAS" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/conector-mini-fit-femea-02-vias">CONECTOR MINI FIT FEMEA 02 VIAS</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/ventilador-120x120-25mm-12v-bucha" class='miniImage'>
+					<img src="/img/216x162/ventilador-120x120-25mm-12v-bucha_2942.jpg" alt="VENTILADOR 120X120 25MM 12V BUCHA" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/ventilador-120x120-25mm-12v-bucha">VENTILADOR 120X120 25MM 12V BUCHA</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/tubo-solda-c-4mts-best-1mm-25-gramas" class='miniImage'>
+					<img src="/img/216x162/tubo-solda-c-4mts-best_6727.jpg" alt="TUBO SOLDA C/+-4MTS BEST 1MM 25 GRAMAS" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/tubo-solda-c-4mts-best-1mm-25-gramas">TUBO SOLDA C/+-4MTS BEST 1MM 25 GRAMAS</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/adapt-p-pontas-smd-mod-smta-weller" class='miniImage'>
+					<img src="/img/216x162/adapt-p-pontas-smd-mod-smta_6819.jpg" alt="ADAPT P/PONTAS SMD MOD SMTA WELLER" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/adapt-p-pontas-smd-mod-smta-weller">ADAPT P/PONTAS SMD MOD SMTA WELLER</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/mini-modu-mch-1x40-mls-40" class='miniImage'>
+					<img src="/img/216x162/mini-modu-mch-1x40-mls-40_25288.png" alt="MINI MODU MCH 1X40 MLS-40" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/mini-modu-mch-1x40-mls-40">MINI MODU MCH 1X40 MLS-40</a>
+		</div>
+		<div class="marca">
+			Metaltex		</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/capacitor-disco-ceramico-1-2pf-50v" class='miniImage'>
+					<img src="/img/216x162/capacitor-disco-ceramico-1-2pf-50v_11191.jpg" alt="CAPACITOR DISCO CERAMICO 1,2PF/50V" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/capacitor-disco-ceramico-1-2pf-50v">CAPACITOR DISCO CERAMICO 1,2PF/50V</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/resistor-1-8w-1r-5-mini" class='miniImage'>
+					<img src="/img/216x162/resistor-1-8w-1r-5-mini_13821.jpg" alt="RESISTOR 1/8W 1R 5 MINI" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/resistor-1-8w-1r-5-mini">RESISTOR 1/8W 1R 5 MINI</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/alicate-decapador-p-cabo-coaxial-hikari-hk-311" class='miniImage'>
+					<img src="/img/216x162/alicate-decapador-p-cabo-coaxial-hikari-hk-311_5734.jpg" alt="ALICATE DECAPADOR P/CABO COAXIAL HIKARI HK-311" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/alicate-decapador-p-cabo-coaxial-hikari-hk-311">ALICATE DECAPADOR P/CABO COAXIAL HIKARI HK-311</a>
+		</div>
+		<div class="marca">
+			Hikari		</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/transformador-06-0-2-6-6v-200mah-1-2va-unitel" class='miniImage'>
+					<img src="/img/216x162/transformador-06-0-2-6-6v-200mah-1-2va-unitel_7006.jpg" alt="TRANSFORMADOR 06/0,2 (6+6V/200MAH - 1,2VA) UNITEL" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/transformador-06-0-2-6-6v-200mah-1-2va-unitel">TRANSFORMADOR 06/0,2 (6+6V/200MAH - 1,2VA) UNITEL</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/luminaria-led-touch-relogio-usb-slm-101-solver" class='miniImage'>
+					<img src="/img/216x162/luminaria-led-touch-relogio-usb-slm-101_6979.jpg" alt="LUMINARIA LED TOUCH RELOGIO USB SLM-101 SOLVER" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/luminaria-led-touch-relogio-usb-slm-101-solver">LUMINARIA LED TOUCH RELOGIO USB SLM-101 SOLVER</a>
+		</div>
+		<div class="marca">
+			Solver		</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/trimpot-3386-1-volta-10r-horizontal" class='miniImage'>
+					<img src="/img/216x162/trimpot-3386-1-volta-10r-horizontal_9410.jpg" alt="TRIMPOT 3386 1 VOLTA 10R HORIZONTAL" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/trimpot-3386-1-volta-10r-horizontal">TRIMPOT 3386 1 VOLTA 10R HORIZONTAL</a>
+		</div>
+		<div class="marca">
+					</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+<div class='prod col-md-3 col-sm-3'>
+<div class='prod_in'>
+		<div class="imagem">
+		<ul>
+							<li><a href="https://betacomercial.com.br/produto/ferro-de-solda-30w-127v-25w-hikari-power" class='miniImage'>
+					<img src="/img/216x162/ferro-de-solda-30w-127v-25w-hikari-power_5814.jpg" alt="FERRO DE SOLDA 30W 127V ( 25W ) HIKARI POWER" border="0" class="img-responsive" />
+				</a></li>
+					</ul>
+	</div>
+	<div class="desc">
+		<div class="nome">
+			<a href="https://betacomercial.com.br/produto/ferro-de-solda-30w-127v-25w-hikari-power">FERRO DE SOLDA 30W 127V ( 25W ) HIKARI POWER</a>
+		</div>
+		<div class="marca">
+			Hikari		</div>
+		
+			<div class="preco ">
+				<div class="col-md-12">
+								</div>
+				<div class="col-md-12 compra">
+					<!--a href="/login" class="addcart btn">Login</a-->
+					<h2>
+					<a href="/contato" target="_self" class="titulo2" style="text-align: center;" > CONSULTE-NOS
+					</a>
+					</h2>					
+				</div>
+			</div>
+		
+	</div>
+	</div>
+</div>
+</div></div></div><div id='d31' style='min-height:100px; border-top:3px solid #f1f1f1; margin-top:10px;' class=''><div id='d48' style='min-height:100px;' class='container'><div id='d132' style='min-height:100px; padding-top:15px;' class='col-md-4 '><p><img src="/template/body/logo.png" alt="" width="278" height="77" /></p></div><div id='d133' style='min-height:100px;' class='col-md-4'><h2>Horário de funcionamento</h2>
+<p>De Segunda à Sexta-feira das 08:30h às 18:00h</p>
+<p>Sabado das 09:00h às 12:00h</p>
+<p> </p></div><div id='d134' style='min-height:100px;' class='col-md-4'><h2>Informa&ccedil;&otilde;es de contato</h2>
+
+<ul>
+	<li><img alt="" src="/template/body/localizacao.png" style="height:25px; width:26px" />Av. Sete de Setembro 3561, Centro, Curitiba - PR</li>
+	<li><strong><img alt="" src="/template/body/contato.png" style="height:26px; width:26px" />(41) 3233-2425 / (41)&nbsp;3029-9292</strong></li>
+</ul></div></div><div id='d131' style='width:100%; background:#ac232a; min-height:100px;' class=''><div id='d135' style='min-height:40px; margin-top:40px;' class='container '><p style="text-align:center"><span style="color:#ffffff"><strong>Copyright &copy; 2016 Beta Comercial Eletr&ocirc;nica</strong></span></p>
+
+<p style="text-align:center"><strong><span style="color:#ffffff">Desenvolvido por </span><a href="http://www.reinsistemas.com.br/site/" target="_blank"><span style="color:#ffffff"><u>Rein Sistemas</u></span></a></strong></p></div></div></div></div></div>
+		<!-- BEGIN JIVOSITE CODE {literal} -->
+<script type='text/javascript'>
+(function(){ var widget_id = 'mzmsKWfr2C';var d=document;var w=window;function l(){
+var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+<!-- {/literal} END JIVOSITE CODE -->
+	</body>
+</html>
