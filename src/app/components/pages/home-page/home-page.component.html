@@ -1,0 +1,61 @@
+<main class="main">
+    <div class="container text-center">
+      <h1>{{ titulo }}</h1>
+  
+      <div class="input-group mb-3">
+        <input [(ngModel)]="nomePesquisa" (input)="aplicarFiltro()" type="text" class="form-control"
+          placeholder="Insira o nome do produto" aria-label="Insira o nome do produto">
+      </div>
+  
+      <div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Código</th>
+              <th scope="col">Produto</th>
+              <th scope="col">Imagem</th>
+              <th scope="col">Requisição</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr *ngFor="let produto of produtosCarregados">
+              <th scope="row">{{ produto.codigo }}</th>
+              <td>{{ produto.nome }}</td>
+              <td>
+                <button type="button" class="btn btn-primary" [attr.data-bs-toggle]="'modal'"
+                  [attr.data-bs-target]="'#modal' + produto.codigo">
+                  Ver imagem
+                </button>
+  
+                <div class="modal fade" [id]="'modal' + produto.codigo" data-bs-backdrop="static" data-bs-keyboard="false"
+                  tabindex="-1" [attr.aria-labelledby]="'modal' + produto.codigo + 'Label'" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">{{ produto.nome }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <img class="img-fluid" [src]="produto.imagemUrl" alt="{{ produto.nome }}" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <button type="button" class="btn btn-warning" (click)="mudarRota(produto.codigo)">
+                  Fazer Requisição
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  
+        <!-- Div para detectar o final da lista -->
+        <div #sentinela style="height: 20px;"></div>
+  
+      </div>
+    </div>
+  </main>
+  
