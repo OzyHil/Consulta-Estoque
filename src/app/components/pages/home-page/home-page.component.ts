@@ -1,43 +1,3 @@
-// import { Component } from '@angular/core';
-// import { FormsModule } from '@angular/forms';
-// import { NgFor } from '@angular/common';
-// import { HttpClient } from '@angular/common/http';  // Importando HttpClientModule
-// import { Produto } from '../../../models/produto.model';
-// import { ProdutoService } from '../../../services/produto.service';
-// import { Router } from '@angular/router';
-
-// @Component({
-//   selector: 'app-home-page',
-//   standalone: true,
-//   imports: [FormsModule, NgFor],
-//   templateUrl: './home-page.component.html',
-//   styleUrl: './home-page.component.css'
-// })
-// export class HomePageComponent {
-//   titulo = 'Sistema de Consulta ao Estoque';
-//   produtos: Produto[] = [];
-//   nomePesquisa = '';
-//   codigoProduto = 0
-//   constructor(private produtoService: ProdutoService, private http: HttpClient, private router: Router) {}
-
-//   ngOnInit() {
-//     this.produtoService.getProdutos().subscribe(data => {
-//       this.produtos = data;
-//     });
-//   }
-
-//   get produtosFiltrados() {
-//     return this.produtos.filter(p => 
-//       p.nome.toLowerCase().includes(this.nomePesquisa.toLowerCase())
-//     );
-//   }
-
-//   mudarRota(codigoProduto : string) {
-//     this.router.navigate(['requisicao/fex', codigoProduto]);
-//     console.log("mudou");
-    
-//   }
-// }
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
@@ -64,7 +24,7 @@ export class HomePageComponent implements AfterViewInit {
 
   @ViewChild('sentinela', { static: false }) sentinela!: ElementRef;
 
-  constructor(private produtoService: ProdutoService, private http: HttpClient, private router: Router) {}
+  constructor(private produtoService: ProdutoService, private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.produtoService.getProdutos().subscribe(data => {
@@ -110,7 +70,8 @@ export class HomePageComponent implements AfterViewInit {
     }
   }
 
-  mudarRota(codigoProduto: string) {
-    this.router.navigate(['requisicao/fex', codigoProduto]);
+  mudarRota(produto: Produto) {
+    this.produtoService.setProduto(produto);
+    this.router.navigate(['requisicao/fex', produto.codigo], { state: { produto } });
   }
 }

@@ -11830,5 +11830,32 @@
             "nome": "JOELHO FERRO MALEAVEL 1/2",
             "imagemUrl": "imagens-produtos/09764.jpg"
         }
-    ]
+    ],
+    "empresas":[
+        {
+            "nome": "FEX",
+            "codigo":"0010"
+        },
+        {
+            "nome": "TISSUE",
+            "codigo":"0050"
+        }
+    ],
+    "centro_de_custos":[
+        {
+            "codigo": ""
+        }
+    ], 
+    "departamentos":[
+        {
+            "nome": "Almoxarifado Manutenção",
+            "codigo": "003"
+        }
+    ], 
+    "transferencias":[
+        {
+            "nome": "Saída por Requisição",
+            "codigo": "90250"
+        }
+    ] 
 }

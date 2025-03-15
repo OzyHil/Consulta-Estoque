@@ -9,11 +9,20 @@ import { Produto } from '../models/produto.model';  // Ajuste o caminho conforme
 export class ProdutoService {
 
   private apiUrl = 'http://localhost:3000/produtos/';  // Caminho do arquivo JSON no diretório 'assets'
-  //localhost
+  private produtoSelecionado!: Produto | null;
+  
   constructor(private http: HttpClient) { }
 
   // Método para obter os produtos
   getProdutos(): Observable<Produto[]> {
     return this.http.get<Produto[]>(this.apiUrl);
+  }
+
+  setProduto(produto: Produto) {
+    this.produtoSelecionado = produto;
+  }
+
+  getProduto(): Produto | null {
+    return this.produtoSelecionado;
   }
 }

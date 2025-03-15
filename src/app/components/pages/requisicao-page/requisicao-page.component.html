@@ -1,1 +1,42 @@
-<p>requisicao-page works!</p>
+<main class="main container">
+    <div class="text-center">
+      <h1>{{ titulo }}</h1>
+    </div>
+    <form class="row g-3">
+        <div class="col-12">
+          <label for="inputResponsavel" class="form-label"><b>Material</b></label>
+          <input class="form-control" type="text" [attr.value]="`${produto.codigo} - ${produto.nome}`" [attr.aria-label]="produto.nome" disabled readonly>        
+        </div>
+        <div class="col-6">
+          <label for="inputResponsavel" class="form-label"><b>Responsável</b></label>
+          <input type="text" class="form-control" id="inputResponsavel" placeholder="Responsável pelo almoxarifado">
+        </div>
+        <div class="col-6">
+          <label for="inputRecebedor" class="form-label"><b>Recebedor</b></label>
+          <input type="text" class="form-control" id="inputRecebedor" placeholder="Recebedor do material">
+        </div>
+        <div class="col-md-3">
+          <label for="inputState" class="form-label"><b>Centro de custo</b></label>
+          <select id="inputState" class="form-select">
+            <option selected>Selecione...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="col-3">
+          <label for="codigoEmpresa" class="form-label"><b>Cód. empresa</b></label>
+          <input class="form-control" type="text" [attr.value]="`${empresa?.codigo} - ${empresa?.nome}`" [attr.aria-label]="empresa?.nome" disabled readonly>        
+        </div>
+        <div class="col-3">
+          <label for="codigoTransferencia" class="form-label"><b>Cód. transferência</b></label>
+          <input class="form-control" type="text" [attr.value]="`${transferencia?.codigo} - ${transferencia?.nome}`" [attr.aria-label]="transferencia?.codigo" disabled readonly>        
+        </div>
+        <div class="col-3">
+          <label for="codigoDepartamento" class="form-label"><b>Código de departamento</b></label>
+          <input class="form-control" type="text" [attr.value]="`${departamento?.codigo} - ${departamento?.nome}`" [attr.aria-label]="departamento?.codigo" disabled readonly>        
+        </div>
+        <div class="col-6">
+          <button type="submit" class="btn btn-success" (click)="baixarArquivo()">Requisitar</button>
+        </div>
+      </form>
+  </main>
+  
