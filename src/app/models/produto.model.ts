@@ -1,7 +1,6 @@
-export interface Produto {
-    id: string;
-    nome: string;
+import { Identificavel } from "./identificavel.model";
+
+export interface Produto extends Identificavel {
     imagemUrl: string;
-    codigo: string;
   }
   

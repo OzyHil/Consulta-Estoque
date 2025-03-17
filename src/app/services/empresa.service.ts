@@ -8,7 +8,7 @@ import { Identificavel } from '../models/identificavel.model'; // Ajuste o camin
   providedIn: 'root'
 })
 export class EmpresaService {
-  private apiUrl = 'http://localhost:3000/empresas';  // Ajuste a URL
+  private apiUrl = 'http://localhost:3100/empresas';  // Ajuste a URL
 
   constructor(private http: HttpClient) { }
 

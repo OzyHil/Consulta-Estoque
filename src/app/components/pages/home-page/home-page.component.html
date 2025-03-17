@@ -1,61 +1,126 @@
 <main class="main container">
+  <div>
     <div class="text-center">
       <h1>{{ titulo }}</h1>
-  
-      <div class="input-group mb-3">
-        <input [(ngModel)]="nomePesquisa" (input)="aplicarFiltro()" type="text" class="form-control"
-          placeholder="Insira o nome do produto" aria-label="Insira o nome do produto">
-      </div>
-  
-      <div>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Código</th>
-              <th scope="col">Produto</th>
-              <th scope="col">Imagem</th>
-              <th scope="col">Requisição</th>
-            </tr>
-          </thead>
-  
-          <tbody>
-            <tr *ngFor="let produto of produtosCarregados">
-              <th scope="row">{{ produto.codigo }}</th>
-              <td>{{ produto.nome }}</td>
-              <td>
-                <button type="button" class="btn btn-primary" [attr.data-bs-toggle]="'modal'"
-                  [attr.data-bs-target]="'#modal' + produto.codigo">
-                  Ver imagem
-                </button>
-  
-                <div class="modal fade" [id]="'modal' + produto.codigo" data-bs-backdrop="static" data-bs-keyboard="false"
-                  tabindex="-1" [attr.aria-labelledby]="'modal' + produto.codigo + 'Label'" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">{{ produto.nome }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <img class="img-fluid" [src]="produto.imagemUrl" alt="{{ produto.nome }}" />
-                      </div>
+    </div>
+
+
+    <div class="input-group mb-0">
+      <input [(ngModel)]="nomePesquisa" (input)="aplicarFiltro()" type="text" class="form-control"
+        placeholder="Insira o nome do produto" aria-label="Insira o nome do produto">
+        <button type="button" class="btn btn-warning" (click)="mudarRota()">
+          Fazer Requisição
+        </button>
+    </div>
+
+    <div class="mt-2 mb-3">
+      <span class="me-3"><i>Total de materiais: {{produtosFiltrados.length}}</i></span>
+      <span class=""><i>Materiais selecionados: {{selecionados}}</i></span>
+    </div>
+    <div>
+
+      <!-- <table class="table table-striped text-center">
+        <thead>
+          <tr>
+            <th></th>
+            <th scope="col">Código</th>
+            <th scope="col">Produto</th>
+            <th scope="col">Imagem</th>
+            <th scope="col">Requisição</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let produto of produtosCarregados" class="align-middle">
+            <th>
+              <input type="checkbox" class="btn-check" [id]="produto.codigo" [checked]="isChecked(produto.codigo)"
+                (change)="toggleCheckbox(produto.codigo)" autocomplete="off">
+              <label class="btn btn-outline-primary" [for]="produto.codigo"></label><br>
+            </th>
+            <th scope="row">{{ produto.codigo }}</th>
+            <td>{{ produto.nome }}</td>
+            <td>
+              <button type="button" class="btn btn-primary" [attr.data-bs-toggle]="'modal'"
+                [attr.data-bs-target]="'#modal' + produto.codigo">
+                Ver imagem
+              </button>
+              <div class="modal fade" [id]="'modal' + produto.codigo" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" [attr.aria-labelledby]="'modal' + produto.codigo + 'Label'" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">{{ produto.nome }}</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <img class="img-fluid" [src]="produto.imagemUrl" alt="{{ produto.nome }}" />
                     </div>
                   </div>
                 </div>
-              </td>
-              <td>
-                <button type="button" class="btn btn-warning" (click)="mudarRota(produto)">
-                  Fazer Requisição
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-  
-        <!-- Div para detectar o final da lista -->
-        <div #sentinela style="height: 20px;"></div>
-  
-      </div>
+              </div>
+            </td>
+            <td>
+              <button type="button" class="btn btn-warning" (click)="mudarRota(produto)">
+                Fazer Requisição
+              </button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table> -->
+      <table class="table table-striped text-center">
+        <thead>
+          <tr>
+            <th class="sticky-col">Selecionar</th> <!-- Coluna dos checkboxes -->
+            <th scope="col">Código</th>
+            <th scope="col">Produto</th>
+            <th scope="col">Imagem</th>
+            <!-- <th scope="col">Requisição</th> -->
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let produto of produtosCarregados" class="align-middle">
+            <td class="sticky-col">
+              <input type="checkbox" class="btn-check" [id]="produto.codigo" (change)="toggleCheckbox(produto.codigo)"
+                [checked]="isChecked(produto.codigo)" autocomplete="off">
+              <label class="btn btn-outline-primary" [for]="produto.codigo"></label>
+            </td>
+            <th scope="row">{{ produto.codigo }}</th>
+            <td>{{ produto.nome }}</td>
+            <td>
+              <button type="button" class="btn btn-primary" [attr.data-bs-toggle]="'modal'"
+                [attr.data-bs-target]="'#modal' + produto.codigo">
+                Ver imagem
+              </button>
+
+              <div class="modal fade" [id]="'modal' + produto.codigo" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" [attr.aria-labelledby]="'modal' + produto.codigo + 'Label'" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">{{ produto.nome }}</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <img class="img-fluid" [src]="produto.imagemUrl" alt="{{ produto.nome }}" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <!-- <td>
+              <button type="button" class="btn btn-warning" (click)="mudarRota(produto)">
+                Fazer Requisição
+              </button>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Div para detectar o final da lista -->
+      <div #sentinela style="height: 20px;"></div>
+
     </div>
-  </main>
-  
+  </div>
+</main>

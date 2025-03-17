@@ -11843,7 +11843,12 @@
     ],
     "centro_de_custos":[
         {
-            "codigo": ""
+            "codigo": "004",
+            "nome": "ADM"
+        },
+        {
+            "codigo": "005",
+            "nome": "Oficina"
         }
     ], 
     "departamentos":[

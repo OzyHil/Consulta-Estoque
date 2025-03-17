@@ -9,21 +9,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // titulo = 'Sistema de Consulta ao Estoque';
-  // produtos: Produto[] = [];
-  // nomePesquisa = '';
 
-  // constructor(private produtoService: ProdutoService, private http: HttpClient) {}
-
-  // ngOnInit() {
-  //   this.produtoService.getProdutos().subscribe(data => {
-  //     this.produtos = data;
-  //   });
-  // }
-
-  // get produtosFiltrados() {
-  //   return this.produtos.filter(p => 
-  //     p.nome.toLowerCase().includes(this.nomePesquisa.toLowerCase())
-  //   );
-  // }
 }
