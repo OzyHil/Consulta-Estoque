@@ -1,5 +1,5 @@
 export interface Identificavel {
-    nome: string;
-    codigo: string;
-  }
-  
+  id: number;
+  nome: string;
+  codigo: string;
+}

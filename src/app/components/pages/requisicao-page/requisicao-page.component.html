@@ -1,42 +1,100 @@
 <main class="main container">
-    <div class="text-center">
-      <h1>{{ titulo }}</h1>
+  <div class="text-center">
+    <h1>{{ titulo }}</h1>
+  </div>
+  <form class="row g-3">
+
+    <table class="table table-striped text-center">
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Produto</th>
+          <th scope="col">Imagem</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let produto of produtosSelecionados" class="align-middle">
+          <th scope="row">{{ produto.codigo }}</th>
+          <td>{{ produto.nome }}</td>
+          <td>
+            <button type="button" class="btn btn-primary" [attr.data-bs-toggle]="'modal'"
+              [attr.data-bs-target]="'#modal' + produto.codigo">
+              Ver imagem
+            </button>
+
+            <div class="modal fade" [id]="'modal' + produto.codigo" data-bs-backdrop="static" data-bs-keyboard="false"
+              tabindex="-1" [attr.aria-labelledby]="'modal' + produto.codigo + 'Label'" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">{{ produto.nome }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <img class="img-fluid" [src]="produto.imagemUrl" alt="{{ produto.nome }}" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="col-6">
+      <label for="inputResponsavel" class="form-label"><b>Responsável</b></label>
+      <input type="text" class="form-control" name="responsavel" [(ngModel)]="responsavel" id="inputResponsavel"
+        placeholder="Responsável pelo almoxarifado">
     </div>
-    <form class="row g-3">
-        <div class="col-12">
-          <label for="inputResponsavel" class="form-label"><b>Material</b></label>
-          <input class="form-control" type="text" [attr.value]="`${produto.codigo} - ${produto.nome}`" [attr.aria-label]="produto.nome" disabled readonly>        
-        </div>
-        <div class="col-6">
-          <label for="inputResponsavel" class="form-label"><b>Responsável</b></label>
-          <input type="text" class="form-control" id="inputResponsavel" placeholder="Responsável pelo almoxarifado">
-        </div>
-        <div class="col-6">
-          <label for="inputRecebedor" class="form-label"><b>Recebedor</b></label>
-          <input type="text" class="form-control" id="inputRecebedor" placeholder="Recebedor do material">
-        </div>
-        <div class="col-md-3">
-          <label for="inputState" class="form-label"><b>Centro de custo</b></label>
-          <select id="inputState" class="form-select">
-            <option selected>Selecione...</option>
-            <option>...</option>
-          </select>
-        </div>
-        <div class="col-3">
-          <label for="codigoEmpresa" class="form-label"><b>Cód. empresa</b></label>
-          <input class="form-control" type="text" [attr.value]="`${empresa?.codigo} - ${empresa?.nome}`" [attr.aria-label]="empresa?.nome" disabled readonly>        
-        </div>
-        <div class="col-3">
-          <label for="codigoTransferencia" class="form-label"><b>Cód. transferência</b></label>
-          <input class="form-control" type="text" [attr.value]="`${transferencia?.codigo} - ${transferencia?.nome}`" [attr.aria-label]="transferencia?.codigo" disabled readonly>        
-        </div>
-        <div class="col-3">
-          <label for="codigoDepartamento" class="form-label"><b>Código de departamento</b></label>
-          <input class="form-control" type="text" [attr.value]="`${departamento?.codigo} - ${departamento?.nome}`" [attr.aria-label]="departamento?.codigo" disabled readonly>        
-        </div>
-        <div class="col-6">
-          <button type="submit" class="btn btn-success" (click)="baixarArquivo()">Requisitar</button>
-        </div>
-      </form>
-  </main>
-  
+
+
+    <div class="col-6">
+      <label for="inputRecebedor" class="form-label"><b>Recebedor</b></label>
+      <input type="text" class="form-control" name="recebedor" id="inputRecebedor" [(ngModel)]="recebedor"
+        placeholder="Recebedor do material">
+    </div>
+
+
+
+    <div class="col-md-3">
+      <label for="inputState" class="form-label"><b>Centro de custo</b></label>
+      <select id="inputState" class="form-select">
+        <option selected>Selecione...</option>
+        <option *ngFor="let cc of centroDeCusto">{{cc.codigo}} - {{cc.nome}}</option>
+      </select>
+    </div>
+
+
+
+
+    <div class="col-3">
+      <label for="codigoEmpresa" class="form-label"><b>Cód. empresa</b></label>
+      <input class="form-control" type="text" value="{{empresa?.codigo}} - {{empresa?.nome}}"
+        [attr.aria-label]="empresa?.nome" disabled readonly>
+    </div>
+
+
+
+    <div class="col-3">
+      <label for="codigoTransferencia" class="form-label"><b>Cód. transferência</b></label>
+      <input class="form-control" type="text" value="{{transferencia?.codigo}} - {{transferencia?.nome}}"
+        [attr.aria-label]="transferencia?.codigo" disabled readonly>
+    </div>
+
+
+
+    <div class="col-3">
+      <label for="codigoDepartamento" class="form-label"><b>Código de departamento</b></label>
+      <input class="form-control" type="text" value="{{departamento?.codigo}} - {{departamento?.nome}}"
+        [attr.aria-label]="departamento?.codigo" disabled readonly>
+    </div>
+
+
+
+    <div class="col-6">
+      <!-- <button type="submit" class="btn btn-success" (click)="baixarArquivo()">Requisitar</button> -->
+      <button type="submit" class="btn btn-success" (click)="adicionarRequisicao()">Requisitar</button>
+    </div>
+  </form>
+</main>

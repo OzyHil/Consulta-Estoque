@@ -8,7 +8,7 @@ import { Produto } from '../models/produto.model';  // Ajuste o caminho conforme
 })
 export class ProdutoService {
 
-  private apiUrl = 'http://localhost:3000/produtos/';  // Caminho do arquivo JSON no diretório 'assets'
+  private apiUrl = 'http://localhost:3100/produtos/';  // Caminho do arquivo JSON no diretório 'assets'
   private produtoSelecionado!: Produto | null;
   
   constructor(private http: HttpClient) { }

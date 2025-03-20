@@ -4,5 +4,5 @@ import { RequisicaoPageComponent } from './components/pages/requisicao-page/requ
 
 export const routes: Routes = [
     { path: '', component: HomePageComponent }, // Rota padrão
-    { path: 'requisicao/fex/:id', component: RequisicaoPageComponent }, // Rota padrão
+    { path: 'requisicao/fex', component: RequisicaoPageComponent }, // Rota padrão
   ];

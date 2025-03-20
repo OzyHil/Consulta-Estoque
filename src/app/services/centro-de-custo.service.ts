@@ -7,18 +7,18 @@ import { Identificavel } from '../models/identificavel.model';
 @Injectable({
   providedIn: 'root'
 })
-export class TransferenciaService {
-  private apiUrl = 'http://localhost:3100/transferencias'; // Ajuste a URL
+export class CentroDeCustoService {
+  private apiUrl = 'http://localhost:3100/centro_de_custos'; // Ajuste a URL
 
   constructor(private http: HttpClient) { }
 
-  getTransferencias(): Observable<Identificavel[]> {
+  getCentroDeCustos(): Observable<Identificavel[]> {
     return this.http.get<Identificavel[]>(this.apiUrl);
   }
 
-  getTransferenciaPorCodigo(codigo: string): Observable<Identificavel | undefined> {
+  getCentroDeCustoPorCodigo(codigo: string): Observable<Identificavel | undefined> {
     return this.http.get<Identificavel[]>(this.apiUrl).pipe(
-      map((transferencia: Identificavel[]) => transferencia.find(trans => trans.codigo === codigo))
+      map((centro: Identificavel[]) => centro.find(cc => cc.codigo === codigo))
     );
   }
 }

@@ -8,7 +8,7 @@ import { Identificavel } from '../models/identificavel.model';
   providedIn: 'root'
 })
 export class DepartamentosService {
-  private apiUrl = 'http://localhost:3000/departamentos'; // Ajuste a URL
+  private apiUrl = 'http://localhost:3100/departamentos'; // Ajuste a URL
 
   constructor(private http: HttpClient) { }
 
